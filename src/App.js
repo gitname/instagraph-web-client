@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Icon } from 'semantic-ui-react';
 
 class App extends Component {
   render() {
     return (
-      <div>{this.constructor.name}</div>
+      <Icon name="check circle" color="green"></Icon>
     );
   }
 }
