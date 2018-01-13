@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
 import TitleBar from './TitleBar';
 import UsernameFormContainer from '../containers/UsernameFormContainer';
@@ -9,29 +10,34 @@ import UsernameFormContainer from '../containers/UsernameFormContainer';
 //
 import "./App.css";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <TitleBar
-          title="Instagraph"
-          icon={{
-            name: "hashtag",
-            color: "purple"
+const App = (props) => {
+  const {setUsername} = props;
+
+  return (
+    <div>
+      <TitleBar
+        title="Instagraph"
+        icon={{
+          name: "hashtag",
+          color: "purple"
+        }}
+      />
+
+      <Container textAlign="center" className="UsernameFormContainer-Container">
+        <UsernameFormContainer
+          autoFocus
+          onSubmit={(values) => {
+            console.log("Form submission handler received values:", values);
+            setUsername(values.username);
           }}
         />
+      </Container>
+    </div>
+  );
+};
 
-        <Container textAlign="center" className="UsernameFormContainer-Container">
-          <UsernameFormContainer
-            autoFocus
-            onSubmit={(values) => {
-              console.log("Form submission handler received values:", values);
-            }}
-          />
-        </Container>
-      </div>
-    );
-  }
-}
+App.propTypes = {
+  setUsername: PropTypes.func.isRequired
+};
 
 export default App;

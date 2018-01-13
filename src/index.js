@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
-import App from './components/App';
+import AppContainer from './containers/AppContainer';
 import registerServiceWorker from './registerServiceWorker';
 
 import 'semantic-ui-css/semantic.min.css';
@@ -19,7 +19,7 @@ const appStore = createStore(
 
 const rootComponent = (
   <Provider store={appStore}>
-    <App />
+    <AppContainer />
   </Provider>
 );
 

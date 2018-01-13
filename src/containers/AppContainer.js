@@ -1,0 +1,18 @@
+import { connect } from 'react-redux';
+import { setUsername } from '../action-creators';
+import App from '../components/App';
+
+const mapDispatchToProps = {
+  setUsername
+};
+
+// Generate a higher-order component (HOC) that makes dispatchers of the Redux
+// actions returned by the action-creators listed above, available to the
+// inner component.
+//
+const AppContainer = connect(
+  null,
+  mapDispatchToProps
+)(App);
+
+export default AppContainer;
