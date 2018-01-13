@@ -7,7 +7,10 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
     "react-scripts": "1.0.17",
+    "redux": "^3.7.2",
+    "redux-form": "^7.2.0",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.77.2"
   },

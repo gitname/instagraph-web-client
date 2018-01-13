@@ -1,0 +1,9 @@
+.UsernameFormContainer-Container {
+    padding: 10em 0;
+}
+
+@media (max-width: 767px) {
+    .UsernameFormContainer-Container {
+        padding: 5em 0;
+    }
+}

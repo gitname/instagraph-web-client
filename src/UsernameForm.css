@@ -1,0 +1,16 @@
+.UsernameForm-Header {
+    font-family: 'Pacifico', cursive !important;
+    font-weight: normal !important;
+}
+
+.UsernameForm-Field_username input {
+    text-align: center !important;
+}
+
+.UsernameForm-Field_username .icon.circular {
+    transition: color .3s ease, background-color .3s ease, opacity .3s ease !important;
+}
+
+.UsernameForm-Field_username .icon.circular:not(.link) {
+    box-shadow: none;
+}
