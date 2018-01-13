@@ -1,5 +1,5 @@
 import { reduxForm } from 'redux-form';
-import UsernameForm from '../UsernameForm';
+import UsernameForm from '../components/UsernameForm';
 
 // Generate a higher-order component (HOC) that passes (to the inner component)
 // `props` describing the state of the form; and in which interaction with

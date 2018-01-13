@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import TitleBar from './TitleBar';
-import UsernameFormContainer from './containers/UsernameFormContainer';
+import UsernameFormContainer from '../containers/UsernameFormContainer';
 
 // Define this component's style rules using regular CSS; since this
 // component's style rules utilize media queries, which are not
