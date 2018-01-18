@@ -12,7 +12,7 @@ import UsernameFormContainer from '../containers/UsernameFormContainer';
 import "./App.css";
 
 const App = (props) => {
-  const {setUsername} = props;
+  const {setUsernameAndGetPosts} = props;
 
   return (
     <div>
@@ -29,7 +29,7 @@ const App = (props) => {
           autoFocus
           onSubmit={(values) => {
             console.log("Form submission handler received values:", values);
-            setUsername(values.username);
+            setUsernameAndGetPosts(values.username);
           }}
         />
       </Container>
@@ -40,7 +40,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  setUsername: PropTypes.func.isRequired
+  setUsernameAndGetPosts: PropTypes.func.isRequired
 };
 
 export default App;

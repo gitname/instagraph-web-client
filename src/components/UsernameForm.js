@@ -110,6 +110,8 @@ ReduxFormSUIInput.propTypes = {
 const UsernameForm = (props) => {
   const {autoFocus, handleSubmit} = props;
 
+  // TODO: Disable form submission if the entered username is the same as the username in the Redux store.
+
   return (
     <form onSubmit={handleSubmit}>
       <Header

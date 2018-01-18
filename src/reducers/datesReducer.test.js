@@ -29,27 +29,15 @@ describe("datesReducer", function () {
     };
   });
 
-  test("increments the active year by 1", () => {
+  test("sets the active year", () => {
     const action = {
-      type: "INCREMENT_ACTIVE_YEAR"
+      type: "SET_ACTIVE_YEAR",
+      payload: {year: 2019}
     };
     const expectedNextDates = {
       activeYear: 2019,
       activeYearFirstMs: _getFirstMsOfYear(2019),
       activeYearFinalMs: _getFinalMsOfYear(2019),
-      naturalYear: 2018
-    };
-    expect(datesReducer(dates, action)).toEqual(expectedNextDates);
-  });
-
-  test("decrements the active year by 1", () => {
-    const action = {
-      type: "DECREMENT_ACTIVE_YEAR"
-    };
-    const expectedNextDates = {
-      activeYear: 2017,
-      activeYearFirstMs: _getFirstMsOfYear(2017),
-      activeYearFinalMs: _getFinalMsOfYear(2017),
       naturalYear: 2018
     };
     expect(datesReducer(dates, action)).toEqual(expectedNextDates);

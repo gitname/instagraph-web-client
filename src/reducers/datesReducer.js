@@ -31,17 +31,8 @@ const datesReducer = (dates = _initialDates, action) => {
     nextActiveYear;
 
   switch (action.type) {
-    case "INCREMENT_ACTIVE_YEAR":
-      nextActiveYear = dates.activeYear + 1;
-      nextDates = {
-        ...dates,
-        activeYear: nextActiveYear,
-        activeYearFirstMs: _getFirstMsOfYear(nextActiveYear),
-        activeYearFinalMs: _getFinalMsOfYear(nextActiveYear)
-      };
-      break;
-    case "DECREMENT_ACTIVE_YEAR":
-      nextActiveYear = dates.activeYear - 1;
+    case "SET_ACTIVE_YEAR":
+      nextActiveYear = action.payload.year;
       nextDates = {
         ...dates,
         activeYear: nextActiveYear,

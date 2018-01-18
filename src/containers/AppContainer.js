@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { setUsername } from '../action-creators';
+import { setUsernameAndGetPosts } from '../action-creators';
 import App from '../components/App';
 
 const mapDispatchToProps = {
-  setUsername
+  setUsernameAndGetPosts
 };
 
 // Generate a higher-order component (HOC) that makes dispatchers of the Redux

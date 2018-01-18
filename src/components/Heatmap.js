@@ -65,8 +65,9 @@ const Heatmap = (props) => {
       activeYearFinalMs,
       naturalYear
     },
-    incrementActiveYear,
-    decrementActiveYear
+    isLoading,
+    errorOccurred,
+    setActiveYearAndGetPosts
   } = props;
 
   const previousActiveYear = activeYear - 1;
@@ -79,17 +80,17 @@ const Heatmap = (props) => {
     <Container className="Heatmap">
       <Dimmer.Dimmable as={Segment}>
 
-        <Dimmer inverted active={false}>
+        <Dimmer inverted active={isLoading || errorOccurred}>
           <Segment basic>
-            <Message icon error={false} hidden={false}>
+            <Message icon error={errorOccurred} hidden={!errorOccurred}>
 
               <Icon name="x" className="hidden-on-phone" />
               <Message.Content>
                 <Message.Header>
-                  Message Headline
+                  Instafail
                 </Message.Header>
                 <p>
-                  Message Description
+                  We failed to build a heatmap for {username}'s profile. You can try again using a different Instagram username.
                 </p>
               </Message.Content>
 
@@ -97,7 +98,7 @@ const Heatmap = (props) => {
           </Segment>
         </Dimmer>
 
-        <Loader indeterminate active={false}>Loading</Loader>
+        <Loader indeterminate active={isLoading}>Loading</Loader>
 
         <Header size="large" textAlign="center" className="Heatmap-Header">
           <Button
@@ -105,7 +106,7 @@ const Heatmap = (props) => {
             floated="right"
             className="Heatmap-YearButton"
             disabled={!enableIncrementActiveYearButton}
-            onClick={incrementActiveYear}>
+            onClick={() => setActiveYearAndGetPosts(nextActiveYear)}>
             {nextActiveYear}
             <Icon name="chevron right" />
           </Button>
@@ -115,7 +116,7 @@ const Heatmap = (props) => {
             floated="left"
             className='Heatmap-YearButton'
             disabled={!enableDecrementActiveYearButton}
-            onClick={decrementActiveYear}>
+            onClick={() => setActiveYearAndGetPosts(previousActiveYear)}>
             <Icon name="chevron left" />
             {previousActiveYear}
           </Button>
@@ -161,8 +162,7 @@ Heatmap.propTypes = {
       count: PropTypes.number.isRequired
     })
   ).isRequired,
-  incrementActiveYear: PropTypes.func.isRequired,
-  decrementActiveYear: PropTypes.func.isRequired
+  setActiveYearAndGetPosts: PropTypes.func.isRequired
 };
 
 export default Heatmap;
