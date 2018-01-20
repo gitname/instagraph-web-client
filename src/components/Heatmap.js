@@ -169,6 +169,8 @@ Heatmap.propTypes = {
       count: PropTypes.number.isRequired
     })
   ).isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  errorOccurred: PropTypes.bool.isRequired,
   setActiveYearAndGetPosts: PropTypes.func.isRequired
 };
 
