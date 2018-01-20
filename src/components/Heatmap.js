@@ -76,6 +76,13 @@ const Heatmap = (props) => {
   const nextActiveYear = activeYear + 1;
   const enableIncrementActiveYearButton = (nextActiveYear <= naturalYear);
 
+  const profileLink = (
+    <a href={`https://www.instagram.com/${username}`}
+       title={`Visit ${username}'s Instagram profile`}>
+      {username}
+    </a>
+  );
+
   return (
     <Container className="Heatmap">
       <Dimmer.Dimmable as={Segment}>
@@ -90,7 +97,7 @@ const Heatmap = (props) => {
                   Instafail
                 </Message.Header>
                 <p>
-                  We failed to build a heatmap for {username}'s profile. You can try again using a different Instagram username.
+                  We failed to build a heatmap for {profileLink}'s profile. You can try again using a different Instagram username.
                 </p>
               </Message.Content>
 
