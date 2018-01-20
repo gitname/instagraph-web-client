@@ -53,12 +53,13 @@ export const setActiveYearAndGetPosts = (year) => {
 
 const getPosts = (username, year) => {
   return (dispatch, getState) => {
+    dispatch(setPostsLoadingErrorStatus(false));
+
     // If the post cache does not already contain the posts for this user
     // and year, fetch those posts from the internet and cache them.
     const postCache = getState().posts;
     if (!(postCache.hasOwnProperty(username) && postCache[username].hasOwnProperty(year))) {
       console.log(`Cache miss: ${username} (${year}).`);
-      dispatch(setPostsLoadingErrorStatus(false));
       dispatch(setPostsLoadingStatus(true));
 
       // Get the ID of the oldest cached post associated with this username,
