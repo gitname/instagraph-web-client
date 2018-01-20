@@ -2,6 +2,12 @@ import { connect } from 'react-redux';
 import { setUsernameAndGetPosts } from '../action-creators';
 import App from '../components/App';
 
+const mapStateToProps = (state) => {
+  return {
+    username: state.username
+  };
+};
+
 const mapDispatchToProps = {
   setUsernameAndGetPosts
 };
@@ -11,7 +17,7 @@ const mapDispatchToProps = {
 // inner component.
 //
 const AppContainer = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(App);
 

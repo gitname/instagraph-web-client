@@ -12,7 +12,7 @@ import UsernameFormContainer from '../containers/UsernameFormContainer';
 import "./App.css";
 
 const App = (props) => {
-  const {setUsernameAndGetPosts} = props;
+  const {setUsernameAndGetPosts, username} = props;
 
   return (
     <div>
@@ -34,13 +34,17 @@ const App = (props) => {
         />
       </Container>
 
-      <HeatmapContainer />
+      {
+        username !== "" &&
+        <HeatmapContainer />
+      }
     </div>
   );
 };
 
 App.propTypes = {
-  setUsernameAndGetPosts: PropTypes.func.isRequired
+  setUsernameAndGetPosts: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired
 };
 
 export default App;
