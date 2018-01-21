@@ -86,6 +86,10 @@
 
 /* -------------------- ↓ Beginning of customizations ↓ -------------------- */
 
+.Heatmap {
+    padding-bottom: 1em;
+}
+
 .Heatmap-Header {
     font-family: 'Pacifico', cursive !important;
     font-weight: normal !important;
