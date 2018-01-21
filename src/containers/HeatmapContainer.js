@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { setActiveYearAndGetPosts } from '../action-creators';
+import { getStandardizedUsername } from "../lib/helpers";
 import Heatmap from '../components/Heatmap';
 
 const convertMsTimestampToDateStr = (msTimestamp) => {
@@ -23,8 +24,9 @@ const indexOfObjectHavingDate = (dateStr, arrayOfObjects) => {
 
 const mapStateToProps = (state) => {
   const countPerDate = [];
-  if (state.posts.hasOwnProperty(state.username) && state.posts[state.username].hasOwnProperty(state.dates.activeYear)) {
-    state.posts[state.username][state.dates.activeYear].forEach((post) => {
+  const stdUsername = getStandardizedUsername(state.username);
+  if (state.posts.hasOwnProperty(stdUsername) && state.posts[stdUsername].hasOwnProperty(state.dates.activeYear)) {
+    state.posts[stdUsername][state.dates.activeYear].forEach((post) => {
       const dateStr = convertMsTimestampToDateStr(post.msTimestamp);
       const index = indexOfObjectHavingDate(dateStr, countPerDate);
       if (index === -1) {
@@ -34,8 +36,6 @@ const mapStateToProps = (state) => {
       }
     });
   }
-
-  //console.log(`state.posts in mapStateToProps: ${JSON.stringify(state.posts)}`);
 
   return {
     username: state.username,
