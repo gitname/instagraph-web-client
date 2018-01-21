@@ -51,11 +51,8 @@ export const _clonePosts = (posts) => {
 export const _initialPosts = {};
 
 export const postsReducer = (posts = _initialPosts, action) => {
-  // console.group("postsReducer");
-  // console.log("postsReducer received posts:", JSON.stringify(posts));
-  // console.log("postsReducer received action:", JSON.stringify(action));
-
   let nextPosts = {};
+
   switch (action.type) {
     case "UPDATE_POSTS_CACHE":
       const payload = action.payload;
@@ -66,14 +63,13 @@ export const postsReducer = (posts = _initialPosts, action) => {
       nextPosts[payload.username][payload.year] = payload.posts.map((post) => {
         return {...post};
       });
-      console.log(`Updated posts cache with ${payload.posts.length} posts.`);
+      console.log(`Updated posts cache with ${payload.posts.length} posts by ${payload.username} (${payload.year}).`);
       break;
     default:
       nextPosts = posts;
       break;
   }
 
-  // console.groupEnd();
   return nextPosts;
 };
 
