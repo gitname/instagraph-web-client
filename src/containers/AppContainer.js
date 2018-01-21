@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setUsernameAndGetPosts } from '../action-creators';
+import { setUsernameResetActiveYearAndGetPosts } from '../action-creators';
 import App from '../components/App';
 
 const mapStateToProps = (state) => {
@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  setUsernameAndGetPosts
+  setUsernameResetActiveYearAndGetPosts
 };
 
 // Generate a higher-order component (HOC) that makes dispatchers of the Redux

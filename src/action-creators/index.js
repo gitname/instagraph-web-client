@@ -14,6 +14,12 @@ const setActiveYear = (year) => {
   };
 };
 
+const resetActiveYear = () => {
+  return (dispatch, getState) => {
+    dispatch(setActiveYear(getState().dates.naturalYear));
+  };
+};
+
 const cachePosts = (username, year, posts) => {
   return {
     type: "UPDATE_POSTS_CACHE",
@@ -35,11 +41,10 @@ const setPostsLoadingErrorStatus = (errorOccurred) => {
   };
 };
 
-// TODO: Consider resetting the activeYear to the naturalYear when the username changes.
-
-export const setUsernameAndGetPosts = (username) => {
+export const setUsernameResetActiveYearAndGetPosts = (username) => {
   return (dispatch, getState) => {
     dispatch(setUsername(username));
+    dispatch(resetActiveYear());
     dispatch(getPosts(username, getState().dates.activeYear));
   };
 };

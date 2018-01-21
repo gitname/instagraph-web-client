@@ -12,7 +12,7 @@ import UsernameFormContainer from '../containers/UsernameFormContainer';
 import "./App.css";
 
 const App = (props) => {
-  const {setUsernameAndGetPosts, username} = props;
+  const {setUsernameResetActiveYearAndGetPosts, username} = props;
 
   return (
     <div>
@@ -28,8 +28,7 @@ const App = (props) => {
         <UsernameFormContainer
           autoFocus
           onSubmit={(values) => {
-            console.log("Form submission handler received values:", values);
-            setUsernameAndGetPosts(values.username);
+            setUsernameResetActiveYearAndGetPosts(values.username);
           }}
         />
       </Container>
@@ -43,7 +42,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  setUsernameAndGetPosts: PropTypes.func.isRequired,
+  setUsernameResetActiveYearAndGetPosts: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired
 };
 
