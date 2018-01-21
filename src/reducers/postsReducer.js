@@ -63,7 +63,7 @@ export const postsReducer = (posts = _initialPosts, action) => {
       nextPosts[payload.username][payload.year] = payload.posts.map((post) => {
         return {...post};
       });
-      console.log(`Updated posts cache with ${payload.posts.length} posts by ${payload.username} (${payload.year}).`);
+      console.log(`Cache updated: Stored ${payload.posts.length} posts by ${payload.username} dated ${payload.year}.`);
       break;
     default:
       nextPosts = posts;

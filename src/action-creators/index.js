@@ -86,7 +86,7 @@ const getPosts = (username, year) => {
     //
     const postCache = getState().posts;
     if (!(postCache.hasOwnProperty(stdUsername) && postCache[stdUsername].hasOwnProperty(year))) {
-      console.log(`Cache miss: ${stdUsername} (${year}).`);
+      console.log(`Cache miss: Found no posts by ${stdUsername} dated ${year}.`);
       dispatch(setPostsLoadingStatus(true));
 
       // Get the ID of the oldest cached post associated with this username,
@@ -112,7 +112,8 @@ const getPosts = (username, year) => {
           dispatch(setPostsLoadingStatus(false));
         });
     } else {
-      console.log(`Cache hit: ${stdUsername} (${year}).`);
+      const numRelevantPostsCached = postCache[stdUsername][year].length;
+      console.log(`Cache hit: Found ${numRelevantPostsCached} posts by ${stdUsername} dated ${year}.`);
     }
   };
 };
