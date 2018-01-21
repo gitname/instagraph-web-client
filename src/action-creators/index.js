@@ -74,13 +74,13 @@ const getPosts = (username, year) => {
       fetchPosts(username, year, idOfUsersOldestCachedPostCreatedAfterYear)
         .then((postsToCache) => {
           dispatch(cachePosts(username, year, postsToCache));
+          dispatch(setPostsLoadingStatus(false));
         })
         .catch((exception) => {
           console.log(exception.message);
           dispatch(setPostsLoadingErrorStatus(true));
-        }).finally(() => {
-        dispatch(setPostsLoadingStatus(false));
-      });
+          dispatch(setPostsLoadingStatus(false));
+        });
     } else {
       console.log(`Cache hit: ${username} (${year}).`);
     }
