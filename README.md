@@ -41,14 +41,12 @@ Instagraph Web Client has the following features:
 
 Instagraph Web Client has the following limitations:
 
-* **Exceeds Instagram HTTP API Rate Limit**: Instagram limits the number of times a computer can access its HTTP API during a given time period. It is possible--for example, by submitting many distinct usernames in rapid succession--to cause this web application to exceed that limit on behalf of a visitor's computer. When that happens, the web application will display _generic_ error information on the page and _specific_ error information in the web browser's JavaScript console. Visitors can recover from that error by refraining from using the web application--and from otherwise accessing Instagram--for several minutes (e.g. 10 minutes).
+* **Hits Instagram HTTP API Rate Limit**: Instagram limits the number of times a computer can access its HTTP API during a given time period. It is possible—by submitting multiple distinct usernames in rapid succession, for example—to cause this web application to hit that limit on behalf of a visitor's computer. When that happens, the web application will display generic error information on the page and [specific error information](https://tools.ietf.org/html/rfc6585#section-4) in the web browser's JavaScript console. Visitors can recover from that error by refraining from using the web application—and from otherwise accessing Instagram—for several minutes (e.g. 10 minutes).
 
 ## FAQ
 
 1. **Q:** Is there an Instagraph Web _Server_ (e.g. API) to complement Instagram Web Client?
-    * **A:** No. Instagraph Web Client accesses the Instagram HTTP API directly. I chose this architecture in an attempt to avoid maintaining an additional web application and incurring additional hosting expenses. An Instagraph Web Server could be designed to, for example, share cached data between visitors and display a list of the most frequently-searched usernames.
-2. **Q:** If I reach the Instagram HTTP API rate limit, will other Instagraph Web Client users be affected?
-    * **A:** No (assuming they're using a different computer from you). The Instagram HTTP API rate limit is imposed on each computer independently.
+    * **A:** No. Instagraph Web Client accesses Instagram's HTTP API (i.e. Instagram's servers) directly.
 
 ## Demo
  
