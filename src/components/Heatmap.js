@@ -97,7 +97,7 @@ const Heatmap = (props) => {
                   Uh-oh! (Instagrief)
                 </Message.Header>
                 <p>
-                  We failed to build a heatmap for {profileLink}'s profile. You can try again using a different Instagram username, or try this one again later.
+                  We failed to build a heatmap for {profileLink}&apos;s profile. You can try again using a different Instagram username, or try this one again later.
                 </p>
               </Message.Content>
 
@@ -121,7 +121,7 @@ const Heatmap = (props) => {
           <Button
             basic
             floated="left"
-            className='Heatmap-YearButton'
+            className="Heatmap-YearButton"
             disabled={!enableDecrementActiveYearButton}
             onClick={() => setActiveYearAndGetPosts(previousActiveYear)}>
             <Icon name="chevron left" />
