@@ -11,6 +11,15 @@ import UsernameFormContainer from '../containers/UsernameFormContainer';
 //
 import "./App.css";
 
+// Define the URL to which the GitHub button in the title bar popup will link.
+const githubUrl = "https://github.com/gitname/instagraph-web-client";
+
+// Define the URL to which the Tweet button in the title bar popup will link.
+const tweetUrl = "https://twitter.com/intent/tweet"
+  + "?text=" + encodeURIComponent("Just Instagraphed my Instagram profile with Instagraph!")
+  + "&url=" + encodeURIComponent(document.URL)
+  + "&hashtags=" + encodeURIComponent(["data", "heatmap", "prettycolors"].join(","));
+
 const App = (props) => {
   const {setUsernameResetActiveYearAndGetPosts, username} = props;
 
@@ -22,6 +31,8 @@ const App = (props) => {
           name: "hashtag",
           color: "purple"
         }}
+        githubUrl={githubUrl}
+        tweetUrl={tweetUrl}
       />
 
       <Container textAlign="center" className="UsernameFormContainer-Container">
