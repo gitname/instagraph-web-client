@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container } from 'semantic-ui-react';
 import TitleBar from './TitleBar';
 import HeatmapContainer from '../containers/HeatmapContainer';
 import UsernameFormContainer from '../containers/UsernameFormContainer';
@@ -34,16 +33,12 @@ const App = (props) => {
         githubUrl={githubUrl}
         tweetUrl={tweetUrl}
       />
-
-      <Container textAlign="center" className="UsernameFormContainer-Container">
-        <UsernameFormContainer
-          autoFocus
-          onSubmit={(values) => {
-            setUsernameResetActiveYearAndGetPosts(values.username);
-          }}
-        />
-      </Container>
-
+      <UsernameFormContainer
+        autoFocus
+        onSubmit={(values) => {
+          setUsernameResetActiveYearAndGetPosts(values.username);
+        }}
+      />
       {
         username !== "" &&
         <HeatmapContainer />

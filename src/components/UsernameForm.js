@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
-import { Header, Icon, Input, Label } from 'semantic-ui-react';
+import { Container, Header, Icon, Input, Label } from 'semantic-ui-react';
 
 // Define this component's style rules using regular CSS; since this
 // component's style rules utilize pseudo-classes, which are not
@@ -113,30 +113,32 @@ const UsernameForm = (props) => {
   // TODO: Disable form submission if the entered username is the same as the username in the Redux store.
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Header
-        className="UsernameForm-Header"
-        content="Heatmap your profile"
-        size="huge"
-      />
-      <Field
-        autoFocus={autoFocus}
-        className="UsernameForm-Field_username"
-        component={ReduxFormSUIInput}
-        fluid
-        iconName="search"
-        instructions="Enter your Instagram username"
-        name="username"
-        placeholder="Enter your Instagram username"
-        size="large"
-        submitHandler={handleSubmit}
-        type="text"
-        validate={[
-          usernameValidators.isNotEmpty,
-          usernameValidators.hasValidFormat
-        ]}
-      />
-    </form>
+    <Container textAlign="center" className="UsernameForm-Container">
+      <form onSubmit={handleSubmit}>
+        <Header
+          className="UsernameForm-Header"
+          content="Heatmap your profile"
+          size="huge"
+        />
+        <Field
+          autoFocus={autoFocus}
+          className="UsernameForm-Field_username"
+          component={ReduxFormSUIInput}
+          fluid
+          iconName="search"
+          instructions="Enter your Instagram username"
+          name="username"
+          placeholder="Enter your Instagram username"
+          size="large"
+          submitHandler={handleSubmit}
+          type="text"
+          validate={[
+            usernameValidators.isNotEmpty,
+            usernameValidators.hasValidFormat
+          ]}
+        />
+      </form>
+    </Container>
   );
 };
 
