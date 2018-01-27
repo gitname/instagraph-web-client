@@ -75,9 +75,9 @@ const getPosts = (username, year) => {
     // Note: Whenever we access (i.e. read from or write to) the post cache
     // using a given username, we will always use the standardized form of that
     // username. That's so, once the cache contains an entry for that username,
-    // we will get a cache hit even if the visitor submits the username using a
-    // case that is different from the case they used when the entry was
-    // created.
+    // we will get a cache hit even if the visitor later submits the username
+    // in a different case from the one they used when the entry was created.
+    // For example, usernames of "Alice" and "alice" will share a cache entry.
     //
     const stdUsername = getStandardizedUsername(username);
 
@@ -89,17 +89,16 @@ const getPosts = (username, year) => {
       console.log(`Cache miss: Found no posts by ${stdUsername} dated ${year}.`);
       dispatch(setPostsLoadingStatus(true));
 
-      // Get the ID of the oldest cached post associated with this username,
-      // created after the subject year.
+      // Get the ID of the oldest cached post that is both associated with this
+      // username and created after the subject year.
       //
-      // Note: By seeding our fetching with the ID of the oldest cached post
-      // associated with this username, we can avoid fetching posts that are
-      // already represented in the post cache.
+      // Note: By seeding our fetching with the ID of that post, we can avoid
+      // fetching posts that are already represented in the post cache.
       //
       const idOfUsersOldestCachedPostCreatedAfterYear = getIdOfUsersOldestCachedPostCreatedAfterYear(postCache, stdUsername, year);
 
-      // Fetch (from the internet) all the posts associated with this username
-      // and created during this year.
+      // Fetch (from the internet) all the posts that are both associated with
+      // this username and created during this year.
       //
       fetchPosts(stdUsername, year, idOfUsersOldestCachedPostCreatedAfterYear)
         .then((postsToCache) => {
@@ -119,8 +118,17 @@ const getPosts = (username, year) => {
 };
 
 /**
- * Fetch all posts associated with `username` created during `year`, beginning
- * our fetch with `maxId`.
+ * Fetch all posts from Instagram that are both associated with `username` and
+ * created during `year`, based upon `maxId` (see next paragraph). Returns a
+ * Promise that will settle to either an array of posts or an exception.
+ *
+ * An explanation of the `maxId` parameter:
+ *
+ * Each response from Instagram contains some set of posts, the newest of which
+ * is the one that was created next after the post whose ID is `maxId`.
+ * In other words, we can use `maxId` to specify which set of posts we want to
+ * fetch. This variable's name was chosen to match the name of the associated
+ * query parameter in the URL.
  *
  * Note: this is a recursive function.
  *
